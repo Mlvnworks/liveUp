@@ -1,0 +1,236 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark The Color Var */
+    --primary-dark-theme: #222;
+    --primary-light-theme: #dfdfdf;
+
+    --secondary-dark-theme: #555;
+    --light: #fff;
+
+    /* Components */
+    --heading-mark: yellow;
+    --svg-color: #fff;
+
+    /* Fonts */
+    --carter-one: 'Carter One', cursive;
+    --roboto: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--primary-dark-theme);
+    font-family: var(--roboto);
+}
+/* Flowers */
+.flower {
+    position: fixed;
+}
+
+@keyframes dropFlower {
+    from {
+        transform: translateY(-100px) rotate(0deg);
+    }
+    to {
+        transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    }
+}
+
+/* ⚡⚡⚡⚡ HEADING ⚡⚡⚡⚡ */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+#main-heading {
+    font-family: var(--carter-one);
+    color: var(--light);
+    flex: 1 1;
+}
+
+#main-heading span {
+    color: var(--heading-mark);
+}
+
+.nav {
+    flex-basis: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav button svg {
+    width: 30px;
+    height: 30px;
+}
+
+.nav button svg path {
+    fill: var(--svg-color);
+}
+
+#dark-icon {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .nav {
+        justify-content: end;
+        gap: 20px;
+    }
+}
+/* ⚡⚡⚡⚡ QUOTES LAYOUT ⚡⚡⚡⚡ */
+#quotes-layout {
+    height: max(600px, 90vh);
+    width: clamp(300px, 90vw, 1320px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 35% 25% 40%;
+    grid-template-rows: 50% 25% 25%;
+    overflow: hidden;
+    padding-block: 50px;
+    gap: 5px;
+}
+
+.qoute-item {
+    background-color: var(--secondary-dark-theme);
+    display: flex;
+    position: relative;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.qoute-item:hover .img-bg {
+    scale: 1.2;
+}
+
+.img-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    filter: brightness(0.5);
+    transition: all 800ms;
+}
+
+@media (max-width: 800px) {
+    .on-screen {
+        scale: 1.2;
+    }
+
+    .qoute-item:hover .img-bg {
+        scale: unset;
+    }
+}
+
+.qoute-item > div {
+    z-index: 1;
+}
+
+.aut-quo {
+    margin: auto;
+    flex: 1 1;
+    padding: 15px;
+    color: var(--light);
+    font-size: clamp(28px, 2.3vw, 70px);
+    font-weight: 700;
+    text-align: center;
+    font-family: var(--carter-one);
+}
+
+.author {
+    color: var(--heading-mark);
+    font-size: 18px;
+    font-style: italic;
+    text-align: end;
+    margin-top: 1rem;
+}
+
+.loading-quote-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-quote-item > * {
+    display: none;
+}
+
+.loading-quote-item::before {
+    content: '';
+    width: 250px;
+    background: linear-gradient(to right, var(--secondary-dark-theme), #aaa, var(--secondary-dark-theme));
+    position: absolute;
+    rotate: 50deg;
+    min-height: 1100px;
+    transform: translateY(-200px);
+    animation: loading 0.8s infinite linear;
+}
+
+@keyframes loading {
+    from {
+        transform: translateX(-600px) translateY(-700px);
+    }
+    to {
+        transform: translateX(600px) translateY(-130px);
+    }
+}
+
+.qoute-item:nth-of-type(1) {
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+
+.qoute-item:nth-of-type(2) {
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
+
+.qoute-item:nth-of-type(3) {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+.qoute-item:nth-of-type(3) .quote {
+    font-size: clamp(28px, 1.5vw, 45px);
+}
+
+.qoute-item:nth-of-type(4) {
+    grid-column: 2/3;
+    grid-row: 2/4;
+}
+
+.qoute-item:nth-of-type(4) .quote {
+    font-size: clamp(28px, 1.5vw, 45px);
+}
+.qoute-item:nth-of-type(5) {
+    grid-column: 3/4;
+    grid-row: 2/4;
+}
+
+@media (max-width: 800px) {
+    #quotes-layout {
+        display: unset;
+        overflow: unset;
+        margin-inline: auto;
+    }
+
+    .qoute-item {
+        width: max(300px, 95vw);
+        height: 300px;
+        margin-block: 1rem;
+        margin-inline: auto;
+    }
+}
