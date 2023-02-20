@@ -234,3 +234,33 @@ header {
         margin-inline: auto;
     }
 }
+
+/*  */
+#arr-down-container {
+    text-align: center;
+    position: relative;
+    padding-block: 50px;
+}
+
+#arr-down-btn {
+    background: none;
+    font-size: 70px;
+    color: var(--light);
+    border: none;
+    position: absolute;
+    top: -10px;
+    animation: down-up 1s infinite alternate;
+    cursor: pointer;
+}
+
+#arr-down-btn:hover {
+    animation-play-state: paused;
+}
+@keyframes down-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-30px);
+    }
+}
